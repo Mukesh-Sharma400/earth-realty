@@ -6,17 +6,17 @@ import { Providers } from "./providers";
 // import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
-  title: "Aarth Realty",
+  title: "Earth Realty",
   description: "",
   keywords: "",
   author: "Nitin Prajapati, Mukesh Sharma",
   image: "./icon.png",
   url: "",
   type: "website",
-  ogTitle: "Aarth Realty",
+  ogTitle: "Earth Realty",
   ogDescription: "",
   ogImage: "./icon.png",
-  twitterTitle: "Aarth Realty",
+  twitterTitle: "Earth Realty",
   twitterDescription: "",
   twitterImage: "./icon.png",
 };
