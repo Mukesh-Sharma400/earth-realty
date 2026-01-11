@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import styled from "styled-components";
 import { usePathname } from "next/navigation";
-import logo from "../../../public/assets/logo.svg";
+import logo from "../../../public/assets/logo.png";
 
 export const Footer = () => {
   const pathName = usePathname();
@@ -21,7 +21,7 @@ export const Footer = () => {
 
   const sectionData = {
     description:
-      "Established in 2007, Earth Realty has firmly established itself as a leading and esteemed provider of interior renovation services, specializing in all types of interior decoration work in Ghansoli, Navi Mumbai and more.",
+      "Established in 2020, Aarth Realty has helped clients find the right homes and investment opportunities across Navi Mumbai, with transparency and trust.",
   };
 
   const socialLinks = [
@@ -62,7 +62,7 @@ export const Footer = () => {
           <SectionHeading>Pages</SectionHeading>
           <PagesWrapper>
             {routesData.map((page) =>
-              page.path === pathName ? null : (
+              (
                 <Page key={page.path} href={page.path}>
                   {page.label}
                 </Page>
@@ -91,11 +91,11 @@ export const Footer = () => {
           <p>
             Designed and Developed by{" "}
             <a href="https://mukesh-sharma.vercel.app" target="_blank">
-              Mukesh Sharma
+              Mukesh
             </a>{" "}
             &{" "}
             <a href="https://nitin-prajapati.vercel.app" target="_blank">
-              Nitin Prajapati
+              Nitin
             </a>
           </p>
         </RightSide>
@@ -112,13 +112,13 @@ const DisplayWrapper = styled.div`
   padding: 50px 5%;
   background-image: repeating-linear-gradient(
     to right,
-    #1d1d1d,
-    #1d1d1d 0.5px,
+    #000,
+    #000 0.5px,
     transparent 0.5px,
     transparent
   );
   background-size: 200px 200px;
-  background-color: #0c0e17;
+  background-color: #100e0eff;
   transition: all 0.5s ease-in-out;
 `;
 

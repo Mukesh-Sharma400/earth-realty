@@ -8,8 +8,8 @@ import backgroundImage from "../../../public/assets/hero-background.jpg";
 
 export const Hero = () => {
   const timeoutRef = useRef(null);
-  const phoneNumber = "+918097775115";
-  const emailAddress = "mjinteriors2007@gmail.com";
+  const phoneNumber = "+91";
+  const emailAddress = "aathar@gmail.com";
   const [toast, setToast] = useState({ visible: false, message: "" });
 
   const showToastMethod = (message) => {
@@ -34,9 +34,9 @@ export const Hero = () => {
   };
 
   const sectionData = {
-    heading: "Transforming Dreams into Real Paradise",
+    heading: "Find a home that suits your lifestyle.",
     description:
-      "From Imagination to Blueprint: Where Your Vision Takes Shape. Welcome to MJ Interior, where we bring dreams to life with sophisticated style and meticulous design.",
+      "We specialize in delivering thoughtfully designed residential and commercial spaces that blend quality, comfort, and long-term value. From concept to completion, we help you invest with confidence.",
   };
 
   const socialLinks = [
@@ -48,19 +48,19 @@ export const Hero = () => {
     },
     {
       className: "bi bi-instagram",
-      href: "https://www.instagram.com/_mjinteriors",
+      href: "",
       tooltip: "Instagram",
       ariaLabel: "Instagram",
     },
     {
       className: "bi bi-facebook",
-      href: "https://www.facebook.com/profile.php?id=61556937652865&sfnsn=wiwspwa&mibextid=RUbZ1f",
+      href: "",
       tooltip: "Facebook",
       ariaLabel: "Facebook",
     },
     {
       className: "bi bi-threads",
-      href: "https://www.threads.net/@_mjinteriors",
+      href: "",
       tooltip: "Threads",
       ariaLabel: "Threads",
     },
@@ -68,7 +68,7 @@ export const Hero = () => {
 
   return (
     <DisplayWrapper>
-      <ToastWrapper showToast={toast.visible}>
+      <ToastWrapper $showToast={toast.visible}>
         <Toast message={toast.message} color={"white"} />
       </ToastWrapper>
       <BackgroundImageWrapper>
@@ -77,21 +77,37 @@ export const Hero = () => {
       </BackgroundImageWrapper>
       <ContentWrapper>
         <InnerContentWrapper data-aos="fade-right">
-          <Heading>{sectionData.heading}</Heading>
+          <Heading>
+            Find a home that suits your <span>lifestyle</span>.
+          </Heading>
+
           <Description>{sectionData.description}</Description>
           <ButtonsWrapper>
-            <PrimaryButton onClick={handleOpenDialer}>
+            {/* <PrimaryButton onClick={handleOpenDialer}>
               <span className="transition"></span>
               <span className="label">
                 <i class="bi bi-telephone-fill"></i> Call Us
               </span>
-            </PrimaryButton>
+            </PrimaryButton> 
             <SecondaryButton onClick={handleCopyEmail}>
               <span className="transition"></span>
               <span className="label">
                 <i class="bi bi-copy"></i> Copy Email
               </span>
-            </SecondaryButton>
+            </SecondaryButton> */}
+            <SlantedPrimaryButton onClick={handleOpenDialer}>
+              <span className="transition"></span>
+              <span className="label">
+                <i className="bi bi-telephone-fill"></i> Call Us
+              </span>
+            </SlantedPrimaryButton>
+            <SlantedSecondaryButton onClick={handleCopyEmail}>
+              <span className="transition"></span>
+              <span className="label">
+                <i className="bi bi-copy"></i> Copy Email
+              </span>
+            </SlantedSecondaryButton>
+
           </ButtonsWrapper>
           <SocialLinksWrapper>
             {socialLinks.map((link, index) => (
@@ -123,7 +139,7 @@ const DisplayWrapper = styled.div`
 
 const ToastWrapper = styled.div`
   position: fixed;
-  top: ${(props) => (props.showToast ? "10%" : "-20%")};
+  top: ${(props) => (props.$showToast ? "10%" : "-20%")};
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
@@ -162,7 +178,7 @@ const Overlay = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 950px;
+  max-width: 700px;
   position: absolute;
   top: 50%;
   left: 10%;
@@ -195,7 +211,7 @@ const Heading = styled.h1`
   font-size: 45px;
   color: white;
   transition: all 0.5s ease-in-out;
-
+  
   @media (max-width: 550px) {
     font-size: 40px;
   }
@@ -239,102 +255,219 @@ const ButtonsWrapper = styled.div`
   transition: all 0.5s ease-in-out;
 `;
 
-const PrimaryButton = styled.button`
+// const PrimaryButton = styled.button`
+//   width: 200px;
+//   height: 40px;
+//   font-size: 20px;
+//   color: white;
+//   background-color: #23c3c4;
+//   border-radius: 40px;
+//   position: relative;
+//   overflow: hidden;
+//   transition: all 0.5s ease-in-out;
+
+//   .transition {
+//     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+//     transition-duration: 500ms;
+//     background-color: #ab81e8;
+//     border-radius: 9999px;
+//     width: 0;
+//     height: 0;
+//     position: absolute;
+//     left: 50%;
+//     top: 50%;
+//     transform: translate(-50%, -50%);
+//   }
+
+//   .label {
+//     position: relative;
+//     top: -1px;
+//   }
+
+//   &:hover .transition {
+//     width: 14em;
+//     height: 14em;
+//   }
+
+//   @media (max-width: 1024px) {
+//     width: 170px;
+//     height: 35px;
+//     font-size: 18px;
+//   }
+//   @media (max-width: 426px) {
+//     width: 130px;
+//     height: 30px;
+//     font-size: 15px;
+//   }
+// `;
+
+const SlantedPrimaryButton = styled.button`
   width: 200px;
-  height: 40px;
-  font-size: 20px;
-  color: white;
-  background-color: #23c3c4;
-  border-radius: 40px;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #cc1e15, #c01209ff);
+  border: none;
+  cursor: pointer;
+
+  clip-path: polygon(
+    10px 0%,
+    100% 0%,
+    calc(100% - 10px) 100%,
+    0% 100%
+  );
+
   position: relative;
-  overflow: hidden;
-  transition: all 0.5s ease-in-out;
+  transition: transform 0.3s ease;
+  overflow: visible;
 
-  .transition {
-    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    transition-duration: 500ms;
-    background-color: #ab81e8;
-    border-radius: 9999px;
-    width: 0;
-    height: 0;
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Underline */
+  &::after {
+    content: "";
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    left: 1%;
+    bottom: 1px;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
   }
 
-  .label {
-    position: relative;
-    top: -1px;
-  }
-
-  &:hover .transition {
-    width: 14em;
-    height: 14em;
+  &:hover::after {
+    width: 70%;
   }
 
   @media (max-width: 1024px) {
     width: 170px;
-    height: 35px;
-    font-size: 18px;
+    height: 40px;
+    font-size: 15px;
   }
+
   @media (max-width: 426px) {
     width: 130px;
-    height: 30px;
-    font-size: 15px;
+    height: 34px;
+    font-size: 14px;
   }
 `;
 
-const SecondaryButton = styled.button`
+const SlantedSecondaryButton = styled.button`
   width: 200px;
-  height: 40px;
-  font-size: 20px;
-  color: white;
-  background-color: transparent;
-  border: 2px solid #23c3c4 !important;
-  border-radius: 40px;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #ffff;
+  background: transparent;
+  border: 2px solid #ffff;
+  cursor: pointer;
+
+  clip-path: polygon(
+    10px 0%,
+    100% 0%,
+    calc(100% - 10px) 100%,
+    0% 100%
+  );
+
   position: relative;
   overflow: hidden;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease;
 
   .transition {
-    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    transition-duration: 500ms;
-    background-color: #ab81e8;
-    border-radius: 9999px;
+    position: absolute;
+    inset: 50%;
     width: 0;
     height: 0;
-    position: absolute;
-    left: 50%;
-    top: 50%;
+    background: #cc1e15;
+    border-radius: 50%;
     transform: translate(-50%, -50%);
+    transition: all 0.5s cubic-bezier(0, 0, 0.2, 1);
+    z-index: 0;
   }
 
   .label {
     position: relative;
-    top: -1px;
+    z-index: 1;
   }
 
   &:hover {
-    border: 2px solid #ab81e8 !important;
+    border-color: #fff;
+    color: #fff;
+    transform: translateY(-2px);
   }
 
   &:hover .transition {
-    width: 14em;
-    height: 14em;
+    width: 18em;
+    height: 18em;
   }
 
   @media (max-width: 1024px) {
     width: 170px;
-    height: 35px;
-    font-size: 18px;
-  }
-  @media (max-width: 426px) {
-    width: 130px;
-    height: 30px;
+    height: 40px;
     font-size: 15px;
   }
+
+  @media (max-width: 426px) {
+    width: 130px;
+    height: 34px;
+    font-size: 14px;
+  }
 `;
+
+// const SecondaryButton = styled.button`
+//   width: 200px;
+//   height: 40px;
+//   font-size: 20px;
+//   color: white;
+//   background-color: transparent;
+//   border: 2px solid #23c3c4 !important;
+//   border-radius: 40px;
+//   position: relative;
+//   overflow: hidden;
+//   transition: all 0.5s ease-in-out;
+
+//   .transition {
+//     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+//     transition-duration: 500ms;
+//     background-color: #ab81e8;
+//     border-radius: 9999px;
+//     width: 0;
+//     height: 0;
+//     position: absolute;
+//     left: 50%;
+//     top: 50%;
+//     transform: translate(-50%, -50%);
+//   }
+
+//   .label {
+//     position: relative;
+//     top: -1px;
+//   }
+
+//   &:hover {
+//     border: 2px solid #ab81e8 !important;
+//   }
+
+//   &:hover .transition {
+//     width: 14em;
+//     height: 14em;
+//   }
+
+//   @media (max-width: 1024px) {
+//     width: 170px;
+//     height: 35px;
+//     font-size: 18px;
+//   }
+//   @media (max-width: 426px) {
+//     width: 130px;
+//     height: 30px;
+//     font-size: 15px;
+//   }
+// `;
 
 const SocialLinksWrapper = styled.div`
   width: 100%;
@@ -362,6 +495,7 @@ const SocialLink = styled(Link)`
   transition: all 0.5s ease-in-out;
 
   &:hover {
-    color: #23c3c4;
+    color: #cc1e15;
+    border: 1px solid #cc1e15;
   }
 `;

@@ -1,0 +1,290 @@
+import Link from "next/link";
+import Image from "next/image";
+import styled from "styled-components";
+import backgroundImage from "../../../public/assets/hero-background.jpg";
+
+
+export const TopListing = () => {
+  const listings = [
+    {
+      id:1,
+      title: "Family House",
+      price: "Start from ₹75L",
+      image: backgroundImage,
+    },
+    {
+      id:2,
+      title: "Apartment",
+      price: "Start from ₹65L",
+      image: backgroundImage,
+    },
+    {
+      id:3,
+      title: "Guest House",
+      price: "Start from ₹85L",
+      image: backgroundImage,
+    },
+  ];
+
+  return (
+    <SectionWrapper>
+      <SectionHeader>
+        <h2>Top Listings</h2>
+      </SectionHeader>
+
+      <CardsWrapper>
+        {listings.map((item) => (
+          <Card key={item.id}>
+            <ImageWrapper>
+              <Image 
+                src={item.image}
+                alt={item.title}
+              />
+            </ImageWrapper>
+
+            <CardFooter>
+              <div>
+                <h4>{item.title}</h4>
+                <span>{item.price}</span>
+              </div>
+              <SlantedArrowButton>
+                <span className="transition" />
+                 →
+              </SlantedArrowButton>
+
+
+            </CardFooter>
+          </Card>
+        ))}
+      </CardsWrapper>
+
+      <SectionFooter>
+        <SlantedPrimaryButton href="/properties">
+            <span className="transition"></span>
+            <span className="label">
+            View More →
+            </span>
+        </SlantedPrimaryButton>
+      </SectionFooter>
+    </SectionWrapper>
+  );
+};
+
+const SectionWrapper = styled.section`
+  width: 100%;
+  padding: 50px 2%;
+  background: #ffffff;
+  transition: all 0.5s ease-in-out;
+`;
+
+const SectionHeader = styled.div`
+  margin-bottom: 40px;
+  text-align:center;
+
+  h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 26px;
+    }
+  }
+`;
+
+const SectionFooter = styled.div`
+  margin: 40px 0px 40px;
+  text-align:center;
+
+  h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 26px;
+    }
+  }
+`;
+
+const CardsWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const Card = styled.div`
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08);
+  }
+`;
+const ImageWrapper = styled.div`
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  ${Card}:hover & img {
+    transform: scale(1.05);
+  }
+`;
+const CardFooter = styled.div`
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #111827;
+  }
+
+  span {
+    font-size: 14px;
+    color: #6b7280;
+  }
+`;
+
+const ArrowButton = styled.div`
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid #cc1e15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cc1e15;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: #cc1e15;
+    color: #fff;
+  }
+`;
+
+const SlantedArrowButton = styled.div`
+  width: 44px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, #cc1e15, #c01209ff);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  position: relative;
+
+  clip-path: polygon(
+    8px 0%,
+    100% 0%,
+    calc(100% - 8px) 100%,
+    0% 100%
+  );
+
+  transition: transform 0.5s ease;
+  overflow: visible;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 1%;
+    bottom: 1px;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+
+
+  &:hover::after {
+    width: 60%;
+  }
+`;
+
+
+const SlantedPrimaryButton = styled.button`
+  width: 200px;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #cc1e15, #c01209ff);
+  border: none;
+  cursor: pointer;
+
+  clip-path: polygon(
+    10px 0%,
+    100% 0%,
+    calc(100% - 10px) 100%,
+    0% 100%
+  );
+
+  position: relative;
+  transition: transform 0.3s ease;
+  overflow: visible;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Underline */
+  &::after {
+    content: "";
+    position: absolute;
+    left: 1%;
+    bottom: 1px;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    width: 70%;
+  }
+
+  @media (max-width: 1024px) {
+    width: 170px;
+    height: 40px;
+    font-size: 15px;
+  }
+
+  @media (max-width: 426px) {
+    width: 130px;
+    height: 34px;
+    font-size: 14px;
+  }
+`;

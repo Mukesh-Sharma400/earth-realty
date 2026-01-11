@@ -4,7 +4,7 @@ import { SideMenu } from "./SideMenu";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import logo from "../../../public/assets/logo.svg";
+import logo from "../../../public/assets/logo.png";
 
 export const Header = () => {
   const pathname = usePathname();
@@ -26,33 +26,46 @@ export const Header = () => {
     setSideMenuOpened(!sideMenuOpened);
   };
 
-  const routesData = [{ path: "/", label: "Home" }];
+  const routesData = [
+    { path: "/", label: "Home" },
+    { path: "/properties", label: "Properties" },
+    { path: "/about", label: "About" },
+    { path: "/contact", label: "Contact" }
+  ];
 
   return (
     <>
-      <DisplayWrapper scrolled={scrolled}>
-        <Logo src={logo} alt="Earth Realty" scrolled={scrolled} />
-        <RoutesWrapper scrolled={scrolled}>
+      <DisplayWrapper $scrolled={scrolled}>
+        <Logo src={logo} alt="Earth Realty" $scrolled={scrolled} />
+        <RoutesWrapper $scrolled={scrolled}>
           {routesData.map((route) => (
             <Route
               key={route.path}
               className={pathname === route.path ? "active" : ""}
               href={route.path}
-              scrolled={scrolled}
+              $scrolled={scrolled}
               pathname={pathname}
             >
               {route.label}
             </Route>
           ))}
         </RoutesWrapper>
-        <Button onClick={handleSideMenu} sideMenuOpened={sideMenuOpened}>
+        <RightActions>
+          <SlantedPrimaryButton href="/contact">
+              <span className="transition"></span>
+              <span className="label">
+              Get in Touch →
+              </span>
+          </SlantedPrimaryButton>
+        </RightActions>
+        <Button onClick={handleSideMenu} $sideMenuOpened={sideMenuOpened}>
           <div className="bar bar--1"></div>
           <div className="bar bar--2"></div>
           <div className="bar bar--3"></div>
         </Button>
       </DisplayWrapper>
       <SideMenu
-        sideMenuOpened={sideMenuOpened}
+        $sideMenuOpened={sideMenuOpened}
         setSideMenuOpened={setSideMenuOpened}
       />
     </>
@@ -65,35 +78,36 @@ const DisplayWrapper = styled.div`
   left: 0;
   right: 0;
   padding: 0px 5%;
-  height: ${(props) => (props.scrolled ? "70px" : "90px")};
+  height: ${(props) => (props.$scrolled ? "70px" : "90px")};
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: ${(props) =>
-    props.scrolled ? "rgba(225, 225, 225, 0.3)" : "transparent"};
+    props.$scrolled ? "#ffffff" : "transparent"};
   box-shadow: ${(props) =>
-    props.scrolled ? "0 4px 15px rgba(225, 225, 225, 0.3)" : "none"};
-  backdrop-filter: ${(props) => (props.scrolled ? "blur(10.1px)" : "none")};
+    props.$scrolled ? "0 4px 15px #ffffff" : "none"};
+  backdrop-filter: ${(props) => (props.$scrolled ? "blur(10.1px)" : "none")};
   -webkit-backdrop-filter: ${(props) =>
-    props.scrolled ? "blur(10.1px)" : "none"};
+    props.$scrolled ? "blur(10.1px)" : "none"};
   border-bottom: ${(props) =>
-    props.scrolled ? "1px solid rgba(225, 225, 225, 1)" : "none"};
+    props.$scrolled ? "1px solid #e5e5e5" : "none"};
   z-index: 2;
   transition: all 0.5s ease-in-out;
 `;
 
 const Logo = styled(Image)`
   width: auto;
-  height: ${(props) => (props.scrolled ? "40px" : "60px")};
+  height: ${(props) => (props.$scrolled ? "40px" : "60px")};
   transition: all 0.5s ease-in-out;
+  
 `;
 
 const RoutesWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 22px;
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 700px) {
@@ -105,7 +119,7 @@ const Route = styled(Link)`
   position: relative;
   font-size: 16px;
   color: ${(props) =>
-    props.scrolled || props.pathname !== "/" ? "black" : "white"};
+    props.$scrolled || props.pathname !== "/" ? "#000" : "#fff"};
   text-decoration: none;
   transition: all 0.5s ease-in-out;
   padding-bottom: 3px;
@@ -118,7 +132,7 @@ const Route = styled(Link)`
   }
 
   &:hover {
-    color: #23c3c4;
+    color: #cc1e15;
   }
 
   &::before {
@@ -127,8 +141,7 @@ const Route = styled(Link)`
     bottom: 0;
     left: 0;
     height: 2px;
-    background-color: ${(props) =>
-      props.className === "active" ? "#ab81e8" : "#23c3c4"};
+    background-color: #cc1e15;
     width: 0;
     transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
   }
@@ -138,12 +151,20 @@ const Route = styled(Link)`
   }
 
   &.active {
-    color: #ab81e8;
+    color: ${(props) =>
+      props.$scrolled || props.pathname !== "/" ? "#cc1e15" : "#ffffff"};
     font-weight: bold;
     &::before {
       width: 100%;
-      background-color: #ab81e8;
+      background-color: ${(props) =>
+      props.$scrolled || props.pathname !== "/" ? "#cc1e15" : "#ffffff"};;
     }
+  }
+  
+  &.active::after {
+    width: 100%;
+    background-color: ${(props) =>
+      props.$scrolled || props.pathname !== "/" ? "#cc1e15" : "#ffffff"};
   }
 `;
 
@@ -177,7 +198,7 @@ const Button = styled.button`
     height: var(--height-bar);
     width: 100%;
     border-radius: 0.5rem;
-    background-color: #9941fc;
+    background-color: #cc1e15;
   }
 
   .bar--1 {
@@ -198,7 +219,7 @@ const Button = styled.button`
   }
 
   ${(props) =>
-    props.sideMenuOpened &&
+    props.$sideMenuOpened &&
     `
     --pos-y-bar-one: calc(var(--gap) + var(--height-bar));
     --pos-y-bar-three: calc(var(--gap) + var(--height-bar));
@@ -206,4 +227,64 @@ const Button = styled.button`
     --rotate-bar-one: 45deg;
     --rotate-bar-three: -45deg;
   `}
+`;
+
+const RightActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  `;
+
+const SlantedPrimaryButton = styled.button`
+  width: 200px;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #cc1e15, #c01209ff);
+  border: none;
+  cursor: pointer;
+
+  clip-path: polygon(
+    10px 0%,
+    100% 0%,
+    calc(100% - 10px) 100%,
+    0% 100%
+  );
+
+  position: relative;
+  transition: transform 0.3s ease;
+  overflow: visible;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Underline */
+  &::after {
+    content: "";
+    position: absolute;
+    left: 1%;
+    bottom: 1px;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    width: 70%;
+  }
+
+  @media (max-width: 1024px) {
+    width: 170px;
+    height: 40px;
+    font-size: 15px;
+  }
+
+  @media (max-width: 426px) {
+    width: 130px;
+    height: 34px;
+    font-size: 14px;
+  }
 `;

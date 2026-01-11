@@ -31,7 +31,12 @@ export const SideMenu = ({ sideMenuOpened, setSideMenuOpened }) => {
     };
   }, [sideMenuOpened]);
 
-  const routesData = [{ path: "/", label: "Home" }];
+  const routesData = [
+    { path: "/", label: "Home" },
+    { path: "/properties", label: "Properties" },
+    { path: "/about", label: "About" },
+    { path: "/contact", label: "Contact" }
+  ];
 
   return (
     <DisplayWrapper ref={sideMenuRef} sideMenuOpened={sideMenuOpened}>
@@ -53,18 +58,23 @@ export const SideMenu = ({ sideMenuOpened, setSideMenuOpened }) => {
 const DisplayWrapper = styled.div`
   display: none;
   width: 50%;
+  max-width: 320px;
   height: 100vh;
-  background: rgba(225, 225, 225, 0.3);
-  box-shadow: 0 4px 15px rgba(225, 225, 225, 0.3);
-  backdrop-filter: blur(10.1px);
-  -webkit-backdrop-filter: blur(10.1px);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(245, 248, 255, 0.95) 100%
+  );
+  box-shadow: -8px 0 25px rgba(0, 0, 0, 0.08);
+   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-left: 1px solid rgba(225, 225, 225, 1);
   padding: 1rem;
   position: fixed;
   top: 0;
-  right: ${(props) => (props.sideMenuOpened ? "0px" : "-400px")};
+  right: ${(props) => (props.$sideMenuOpened ? "0" : "-360px")};
   z-index: 1;
-  transition: all 0.5s ease-in-out;
+  transition: right 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 
   @media (max-width: 700px) {
     display: initial;
@@ -75,37 +85,84 @@ const RoutesWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 16px;
+  gap: 14px;
   height: 100%;
   transition: all 0.5s ease-in-out;
 `;
 
+// const Route = styled(Link)`
+//   font-size: 16px;
+//   color: black;
+//   background-color: white;
+//   width: 100%;
+//   height: 30px;
+//   display: flex;
+//   align-items: center;
+//   padding: 0 10px;
+//   border-radius: 8px;
+//   text-decoration: none;
+//   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+//   transition: all 0.5s ease-in-out;
+
+//   &.active {
+//     color: white;
+//     background-color: #4f7fd3;
+
+//     &:focus {
+//       color: white;
+//       background-color: #4f7fd3;
+//     }
+//   }
+
+//   &:focus {
+//     color: white;
+//     background-color: #3f6fc2;
+//   }
+// `;
+
 const Route = styled(Link)`
-  font-size: 16px;
-  color: black;
-  background-color: white;
+  position: relative;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1f2937;
+
   width: 100%;
-  height: 30px;
+  height: 44px;
   display: flex;
   align-items: center;
-  padding: 0 10px;
-  border-radius: 8px;
+
+  padding: 0 16px;
+  border-radius: 12px;
   text-decoration: none;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  transition: all 0.5s ease-in-out;
 
-  &.active {
-    color: white;
-    background-color: #ab81e8;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
 
-    &:focus {
-      color: white;
-      background-color: #ab81e8;
-    }
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #cc1e15;
+    color: #fff;
+    transform: translateX(4px);
+    box-shadow: 0 8px 18px rgba(211, 79, 79, 0.35);
   }
 
-  &:focus {
-    color: white;
-    background-color: #23c3c4;
+  &.active {
+    background: #cc1e15;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 10px 22px rgba(211, 79, 79, 0.35);
+  }
+
+  &.active::before {
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60%;
+    width: 4px;
+    background: #cc1e15;
+    border-radius: 4px;
   }
 `;
