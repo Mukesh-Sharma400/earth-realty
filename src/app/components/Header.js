@@ -5,9 +5,12 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import logo from "../../../public/assets/logo.png";
+import { uiState } from "../redux/uiSlice";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
   const pathname = usePathname();
+  const { theme } = useSelector(uiState);
   const [scrolled, setScrolled] = useState(false);
   const [sideMenuOpened, setSideMenuOpened] = useState(false);
 
@@ -30,7 +33,7 @@ export const Header = () => {
     { path: "/", label: "Home" },
     { path: "/properties", label: "Properties" },
     { path: "/about", label: "About" },
-    { path: "/contact", label: "Contact" }
+    { path: "/contact", label: "Contact" },
   ];
 
   return (
@@ -52,10 +55,8 @@ export const Header = () => {
         </RoutesWrapper>
         <RightActions>
           <SlantedPrimaryButton href="/contact">
-              <span className="transition"></span>
-              <span className="label">
-              Get in Touch →
-              </span>
+            <span className="transition"></span>
+            <span className="label">Get in Touch →</span>
           </SlantedPrimaryButton>
         </RightActions>
         <Button onClick={handleSideMenu} $sideMenuOpened={sideMenuOpened}>
@@ -84,15 +85,12 @@ const DisplayWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: ${(props) =>
-    props.$scrolled ? "#ffffff" : "transparent"};
-  box-shadow: ${(props) =>
-    props.$scrolled ? "0 4px 15px #ffffff" : "none"};
+  background: ${(props) => (props.$scrolled ? "#ffffff" : "transparent")};
+  box-shadow: ${(props) => (props.$scrolled ? "0 4px 15px #ffffff" : "none")};
   backdrop-filter: ${(props) => (props.$scrolled ? "blur(10.1px)" : "none")};
   -webkit-backdrop-filter: ${(props) =>
     props.$scrolled ? "blur(10.1px)" : "none"};
-  border-bottom: ${(props) =>
-    props.$scrolled ? "1px solid #e5e5e5" : "none"};
+  border-bottom: ${(props) => (props.$scrolled ? "1px solid #e5e5e5" : "none")};
   z-index: 2;
   transition: all 0.5s ease-in-out;
 `;
@@ -101,7 +99,6 @@ const Logo = styled(Image)`
   width: auto;
   height: ${(props) => (props.$scrolled ? "40px" : "60px")};
   transition: all 0.5s ease-in-out;
-  
 `;
 
 const RoutesWrapper = styled.div`
@@ -132,7 +129,7 @@ const Route = styled(Link)`
   }
 
   &:hover {
-    color: #cc1e15;
+    color: ${({ theme }) => theme.globalColors.brandRed};
   }
 
   &::before {
@@ -157,10 +154,10 @@ const Route = styled(Link)`
     &::before {
       width: 100%;
       background-color: ${(props) =>
-      props.$scrolled || props.pathname !== "/" ? "#cc1e15" : "#ffffff"};;
+        props.$scrolled || props.pathname !== "/" ? "#cc1e15" : "#ffffff"};
     }
   }
-  
+
   &.active::after {
     width: 100%;
     background-color: ${(props) =>
@@ -233,7 +230,7 @@ const RightActions = styled.div`
   display: flex;
   align-items: center;
   gap: 14px;
-  `;
+`;
 
 const SlantedPrimaryButton = styled.button`
   width: 200px;
@@ -245,12 +242,7 @@ const SlantedPrimaryButton = styled.button`
   border: none;
   cursor: pointer;
 
-  clip-path: polygon(
-    10px 0%,
-    100% 0%,
-    calc(100% - 10px) 100%,
-    0% 100%
-  );
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
 
   position: relative;
   transition: transform 0.3s ease;
