@@ -85,8 +85,10 @@ const DisplayWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: ${(props) => (props.$scrolled ? "#ffffff" : "transparent")};
-  box-shadow: ${(props) => (props.$scrolled ? "0 4px 15px #ffffff" : "none")};
+  background: ${(props) =>
+    props.$scrolled ? "#ffffff" : "transparent"};
+  box-shadow: ${(props) =>
+    props.$scrolled ? "0 1px 4px #ffffff" : "none"};
   backdrop-filter: ${(props) => (props.$scrolled ? "blur(10.1px)" : "none")};
   -webkit-backdrop-filter: ${(props) =>
     props.$scrolled ? "blur(10.1px)" : "none"};
@@ -241,6 +243,11 @@ const SlantedPrimaryButton = styled.button`
   background: linear-gradient(135deg, #cc1e15, #c01209ff);
   border: none;
   cursor: pointer;
+  display:block;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 
   clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
 
@@ -252,7 +259,6 @@ const SlantedPrimaryButton = styled.button`
     transform: translateY(-2px);
   }
 
-  /* Underline */
   &::after {
     content: "";
     position: absolute;

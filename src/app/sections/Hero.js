@@ -326,7 +326,6 @@ const SlantedPrimaryButton = styled.button`
     transform: translateY(-2px);
   }
 
-  /* Underline */
   &::after {
     content: "";
     position: absolute;
@@ -363,7 +362,7 @@ const SlantedSecondaryButton = styled.button`
 
   color: #ffff;
   background: transparent;
-  border: 2px solid #ffff;
+  border: 2px solid #ffff !important;
   cursor: pointer;
 
   clip-path: polygon(
@@ -395,7 +394,7 @@ const SlantedSecondaryButton = styled.button`
   }
 
   &:hover {
-    border-color: #fff;
+    border-color: #cc1e15 !important;
     color: #fff;
     transform: translateY(-2px);
   }

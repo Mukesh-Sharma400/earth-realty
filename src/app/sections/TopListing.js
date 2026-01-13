@@ -29,7 +29,19 @@ export const TopListing = () => {
   return (
     <SectionWrapper>
       <SectionHeader>
-        <h2>Top Listings</h2>
+          <SectionLabel>
+            <span>PROPERTIES</span>
+            <i />
+          </SectionLabel>
+
+          <SectionInfo>
+            <h2>Find Home Listings in Your Area</h2>
+
+            <p>
+              Consult with a real estate agent who has experience and in-depth
+              knowledge of the market in your area. We are always here for you.
+            </p>
+          </SectionInfo>
       </SectionHeader>
 
       <CardsWrapper>
@@ -72,27 +84,75 @@ export const TopListing = () => {
 
 const SectionWrapper = styled.section`
   width: 100%;
-  padding: 50px 2%;
+  padding: 50px 1.5%;
   background: #ffffff;
   transition: all 0.5s ease-in-out;
 `;
 
 const SectionHeader = styled.div`
-  margin-bottom: 40px;
-  text-align:center;
+  margin-bottom: 60px;
+`;
+
+const SectionLabel = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+
+  span {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #cc1e15;
+    text-transform: uppercase;
+  }
+
+  i {
+    width: 60px;
+    height: 1px;
+    background-color: #cc1e15;
+  }
+  
+  i {
+   animation: expand 0.8s ease forwards;
+  }
+
+  @keyframes expand {
+    from { width: 0; }
+    to { width: 60px; }
+  }
+
+`;
+
+const SectionInfo = styled.div`
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  align-items: center;
+  gap: 40px;
 
   h2 {
-    font-size: 32px;
-    font-weight: 600;
-    color: #1f2937;
+    font-size: 36px;
+    font-weight: 400;
+    color: #111827;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #6b7280;
   }
 
   @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+
     h2 {
       font-size: 26px;
     }
   }
 `;
+
 
 const SectionFooter = styled.div`
   margin: 40px 0px 40px;
