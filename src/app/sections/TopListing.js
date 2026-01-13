@@ -187,13 +187,15 @@ const CardsWrapper = styled.div`
 
 const Card = styled.div`
   background: #fff;
-  border-radius: 18px;
+  border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08);
   transition: transform 0.5s ease, box-shadow 0.5s ease;
 
   &:hover {
     transform: translateY(-6px);
-    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08);
+    box-shadow: none;
+    border-bottom: 1.5px solid #cc1e15;
   }
 `;
 const ImageWrapper = styled.div`

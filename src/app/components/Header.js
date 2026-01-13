@@ -108,6 +108,7 @@ const RoutesWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 22px;
+  margin-left: 66px;
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 700px) {
