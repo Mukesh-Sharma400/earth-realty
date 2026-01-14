@@ -124,7 +124,7 @@ export const OurAgents = () => {
 
 const AgentsSection = styled.section`
     width: 100%;
-    padding: 50px 1.5%;
+    padding: 30px 1.5%;
     background: #ffffff;
     transition: all 0.5s ease-in-out;
 `;
@@ -218,6 +218,7 @@ const AgentCard = styled.div`
 
   &:hover {
     transform: translateY(-6px);
+    transition: transform 0.3s ease;
     box-shadow: none;
     border-bottom:1px solid #cc1e15;
   }
