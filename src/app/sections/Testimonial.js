@@ -7,60 +7,62 @@ import agent2 from "../../../public/assets/agent2.jpg";
 import agent3 from "../../../public/assets/agent3.jpg";
 import agent4 from "../../../public/assets/agent4.jpg";
 
-
 export const Testimonials = () => {
+  return (
+    <TestimonialsSection>
+      <SectionHeader>
+        <SectionLabel>
+          <span>TESTIMONIALS</span>
+          <i />
+        </SectionLabel>
 
-    return (
-        <TestimonialsSection>
-            <SectionHeader>
-                <SectionLabel>
-                    <span>TESTIMONIALS</span>
-                    <i />
-                </SectionLabel>
+        <SectionInfo>
+          <h2>What Our Client Are Saying</h2>
 
-                <SectionInfo>
-                    <h2>What Our Client Are Saying</h2>
+          {/* <p>
+            Comprehensive legal services, expertly delivered. We provide through
+            support and guidance for all your legal matter, handled with utmost
+            care.
+          </p> */}
+        </SectionInfo>
+      </SectionHeader>
 
-                    <p>
-                    Comprehensive legal services, expertly delivered. We provide through support and guidance for all your legal matter, handled with utmost care.
-                    </p>
-                </SectionInfo>
-            </SectionHeader>
+      <CardsWrapper>
+        <TestimonialCard>
+          <ImageBox>
+            <Image src={agent1} alt="user" />
+          </ImageBox>
 
-            <CardsWrapper>
-                <TestimonialCard>
-                <ImageBox>
-                    <Image src={agent1} alt= 'user'/>
-                </ImageBox>
+          <Content>
+            <span className="quote">“</span>
+            <p>
+              Aarth Realton communicated outstandingly, keeping us informed
+              throughout our property search and sale. Their friendly approach
+              made a stressful time manageable. Highly recommend!
+            </p>
 
-                <Content>
-                    <span className="quote">“</span>
-                    <p>
-                    Aarth Realton communicated outstandingly, keeping us informed
-                    throughout our property search and sale. Their friendly approach made
-                    a stressful time manageable. Highly recommend!
-                    </p>
-
-                    <h4>Yono Bakrie</h4>
-                    <span className="role">Football Player</span>
-                </Content>
-                </TestimonialCard>
-            </CardsWrapper>
-        </TestimonialsSection>
-    )
+            <h4>Yono Bakrie</h4>
+            <span className="role">Football Player</span>
+          </Content>
+        </TestimonialCard>
+      </CardsWrapper>
+    </TestimonialsSection>
+  );
 };
 
 const TestimonialsSection = styled.section`
-    width: 100%;
-    padding: 50px 1.5%;
-    background: #ffffff;
-    transition: all 0.5s ease-in-out;
+  width: 100%;
+  padding: 50px 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  background: #ffffff;
+  transition: all 0.5s ease-in-out;
 `;
 
 const SectionHeader = styled.div`
-  margin-bottom: 60px;
+  // margin-bottom: 60px;
 `;
-
 
 const SectionLabel = styled.div`
   display: flex;
@@ -81,21 +83,24 @@ const SectionLabel = styled.div`
     height: 1px;
     background-color: #cc1e15;
   }
-  
+
   i {
-   animation: expand 0.8s ease forwards;
+    animation: expand 0.8s ease forwards;
   }
 
   @keyframes expand {
-    from { width: 0; }
-    to { width: 60px; }
+    from {
+      width: 0;
+    }
+    to {
+      width: 60px;
+    }
   }
-
 `;
 
 const SectionInfo = styled.div`
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  // grid-template-columns: 1.5fr 1fr;
   align-items: center;
   gap: 40px;
 

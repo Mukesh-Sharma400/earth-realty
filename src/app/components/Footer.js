@@ -7,7 +7,7 @@ import logo from "../../../public/assets/logo.png";
 
 export const Footer = () => {
   const pathName = usePathname();
-  const phoneNumber = "+918097775115";
+  const phoneNumber = "+91";
   const currentYear = new Date().getFullYear();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export const Footer = () => {
 
   const sectionData = {
     description:
-      "Established in 2020, Aarth Realty has helped clients find the right homes and investment opportunities across Navi Mumbai, with transparency and trust.",
+      "Established in 2020, Aarth Realtor has helped clients find the right homes and investment opportunities across Navi Mumbai, with transparency and trust.",
   };
 
   const socialLinks = [
@@ -31,17 +31,44 @@ export const Footer = () => {
       tooltip: "WhatsApp",
       ariaLabel: "WhatsApp",
     },
+    {
+      className: "bi bi-instagram",
+      href: "",
+      tooltip: "Instagram",
+      ariaLabel: "Instagram",
+    },
+    {
+      className: "bi bi-facebook",
+      href: "",
+      tooltip: "Facebook",
+      ariaLabel: "Facebook",
+    },
+    {
+      className: "bi bi-threads",
+      href: "",
+      tooltip: "Threads",
+      ariaLabel: "Threads",
+    },
   ];
 
-  const routesData = [{ path: "/", label: "Home" }];
+  const routesData = [
+    { path: "/", label: "Home" },
+    { path: "/properties", label: "Properties" },
+    { path: "/about", label: "About" },
+    { path: "/contact", label: "Contact" },
+  ];
 
-  const servicesData = ["Interior Designing"];
+  const servicesData = [
+    "Interior Designing",
+    "Interior Designing",
+    "Interior Designing",
+  ];
 
   return (
     <DisplayWrapper>
       <ColumnsWrapper>
         <Column1>
-          <Logo src={logo} alt="Earth Realty" />
+          <Logo src={logo} alt="Aarth Realtor" />
           <Description>{sectionData.description}</Description>
           <SocialLinksWrapper>
             {socialLinks.map((link, index) => (
@@ -61,13 +88,11 @@ export const Footer = () => {
         <Column2>
           <SectionHeading>Pages</SectionHeading>
           <PagesWrapper>
-            {routesData.map((page) =>
-              (
-                <Page key={page.path} href={page.path}>
-                  {page.label}
-                </Page>
-              )
-            )}
+            {routesData.map((page) => (
+              <Page key={page.path} href={page.path}>
+                {page.label}
+              </Page>
+            ))}
           </PagesWrapper>
         </Column2>
         <Column3>
@@ -84,17 +109,25 @@ export const Footer = () => {
       <BottomWrapper>
         <LeftSide>
           <p>
-            © {currentYear} <span>Earth Realty</span>. All rights reserved.
+            © {currentYear} <span>Aarth Realtor</span>. All rights reserved.
           </p>
         </LeftSide>
         <RightSide>
           <p>
             Designed and Developed by{" "}
-            <a href="https://mukesh-sharma.vercel.app" target="_blank">
+            <a
+              id="mukesh"
+              href="https://mukesh-sharma.vercel.app"
+              target="_blank"
+            >
               Mukesh
             </a>{" "}
             &{" "}
-            <a href="https://nitin-prajapati.vercel.app" target="_blank">
+            <a
+              id="nitin"
+              href="https://nitin-prajapati.vercel.app"
+              target="_blank"
+            >
               Nitin
             </a>
           </p>
@@ -189,11 +222,16 @@ const SocialLink = styled(Link)`
   font-size: 20px;
   border-radius: 50%;
   color: white;
-  background-color: rgba(255, 255, 255, 0.2);
+  background: rgba(225, 225, 225, 0.3);
+  box-shadow: 0 4px 15px rgba(225, 225, 225, 0.3);
+  backdrop-filter: blur(10.1px);
+  -webkit-backdrop-filter: blur(10.1px);
+  border: 1px solid rgba(225, 225, 225, 1);
   transition: all 0.5s ease-in-out;
 
   &:hover {
-    color: #23c3c4;
+    color: #cc1e15;
+    border: 1px solid #cc1e15;
   }
 `;
 
@@ -236,7 +274,7 @@ const Page = styled(Link)`
   border-bottom: 1px solid transparent;
 
   &:hover {
-    color: #23c3c4;
+    color: #cc1e15;
   }
 
   &::before {
@@ -252,7 +290,7 @@ const Page = styled(Link)`
 
   &:hover::before {
     width: 100%;
-    background-color: #23c3c4;
+    background-color: #cc1e15;
   }
 
   @media (max-width: 950px) {
@@ -325,9 +363,13 @@ const RightSide = styled.div`
     transition: all 0.5s ease-in-out;
 
     font-weight: 600;
-    &:hover {
+    &#mukesh:hover {
       cursor: pointer;
       color: royalBlue;
+    }
+    &#nitin:hover {
+      cursor: pointer;
+      color: orange;
     }
   }
 `;

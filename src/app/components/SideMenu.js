@@ -35,11 +35,11 @@ export const SideMenu = ({ sideMenuOpened, setSideMenuOpened }) => {
     { path: "/", label: "Home" },
     { path: "/properties", label: "Properties" },
     { path: "/about", label: "About" },
-    { path: "/contact", label: "Contact" }
+    { path: "/contact", label: "Contact" },
   ];
 
   return (
-    <DisplayWrapper ref={sideMenuRef} sideMenuOpened={sideMenuOpened}>
+    <DisplayWrapper ref={sideMenuRef} $sideMenuOpened={sideMenuOpened}>
       <RoutesWrapper>
         {routesData.map((route) => (
           <Route
@@ -58,7 +58,7 @@ export const SideMenu = ({ sideMenuOpened, setSideMenuOpened }) => {
 const DisplayWrapper = styled.div`
   display: none;
   width: 50%;
-  max-width: 320px;
+  max-width: 300px;
   height: 100vh;
   background: linear-gradient(
     180deg,
@@ -66,13 +66,13 @@ const DisplayWrapper = styled.div`
     rgba(245, 248, 255, 0.95) 100%
   );
   box-shadow: -8px 0 25px rgba(0, 0, 0, 0.08);
-   backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-left: 1px solid rgba(225, 225, 225, 1);
   padding: 1rem;
   position: fixed;
   top: 0;
-  right: ${(props) => (props.$sideMenuOpened ? "0" : "-360px")};
+  right: ${(props) => (props.$sideMenuOpened ? "0" : "-400px")};
   z-index: 1;
   transition: right 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 

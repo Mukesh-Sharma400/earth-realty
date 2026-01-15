@@ -3,23 +3,22 @@ import Image from "next/image";
 import styled from "styled-components";
 import backgroundImage from "../../../public/assets/hero-background.jpg";
 
-
 export const TopListing = () => {
   const listings = [
     {
-      id:1,
+      id: 1,
       title: "Family House",
       price: "Start from ₹75L",
       image: backgroundImage,
     },
     {
-      id:2,
+      id: 2,
       title: "Apartment",
       price: "Start from ₹65L",
       image: backgroundImage,
     },
     {
-      id:3,
+      id: 3,
       title: "Guest House",
       price: "Start from ₹85L",
       image: backgroundImage,
@@ -29,29 +28,26 @@ export const TopListing = () => {
   return (
     <SectionWrapper>
       <SectionHeader>
-          <SectionLabel>
-            <span>PROPERTIES</span>
-            <i />
-          </SectionLabel>
+        <SectionLabel>
+          <span>PROPERTIES</span>
+          <i />
+        </SectionLabel>
 
-          <SectionInfo>
-            <h2>Find Home Listings in Your Area</h2>
+        <SectionInfo>
+          <h2>Find Home Listings in Your Area</h2>
 
-            <p>
-              Consult with a real estate agent who has experience and in-depth
-              knowledge of the market in your area. We are always here for you.
-            </p>
-          </SectionInfo>
+          {/* <p>
+            Consult with a real estate agent who has experience and in-depth
+            knowledge of the market in your area. We are always here for you.
+          </p> */}
+        </SectionInfo>
       </SectionHeader>
 
       <CardsWrapper>
         {listings.map((item) => (
           <Card key={item.id}>
             <ImageWrapper>
-              <Image 
-                src={item.image}
-                alt={item.title}
-              />
+              <Image src={item.image} alt={item.title} />
             </ImageWrapper>
 
             <CardFooter>
@@ -60,11 +56,8 @@ export const TopListing = () => {
                 <span>{item.price}</span>
               </div>
               <SlantedArrowButton>
-                <span className="transition" />
-                 →
+                <span className="transition" />→
               </SlantedArrowButton>
-
-
             </CardFooter>
           </Card>
         ))}
@@ -72,10 +65,8 @@ export const TopListing = () => {
 
       <SectionFooter>
         <SlantedPrimaryButton href="/properties">
-            <span className="transition"></span>
-            <span className="label">
-            View More →
-            </span>
+          <span className="transition"></span>
+          <span className="label">View More →</span>
         </SlantedPrimaryButton>
       </SectionFooter>
     </SectionWrapper>
@@ -84,13 +75,16 @@ export const TopListing = () => {
 
 const SectionWrapper = styled.section`
   width: 100%;
-  padding: 50px 1.5%;
+  padding: 50px 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
   background: #ffffff;
   transition: all 0.5s ease-in-out;
 `;
 
 const SectionHeader = styled.div`
-  margin-bottom: 60px;
+  // margin-bottom: 60px;
 `;
 
 const SectionLabel = styled.div`
@@ -112,21 +106,24 @@ const SectionLabel = styled.div`
     height: 1px;
     background-color: #cc1e15;
   }
-  
+
   i {
-   animation: expand 0.8s ease forwards;
+    animation: expand 0.8s ease forwards;
   }
 
   @keyframes expand {
-    from { width: 0; }
-    to { width: 60px; }
+    from {
+      width: 0;
+    }
+    to {
+      width: 60px;
+    }
   }
-
 `;
 
 const SectionInfo = styled.div`
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  // grid-template-columns: 1.5fr 1fr;
   align-items: center;
   gap: 40px;
 
@@ -153,10 +150,9 @@ const SectionInfo = styled.div`
   }
 `;
 
-
 const SectionFooter = styled.div`
-  margin: 40px 0px 40px;
-  text-align:center;
+  // margin: 40px 0px 40px;
+  text-align: center;
 
   h2 {
     font-size: 32px;
@@ -265,12 +261,7 @@ const SlantedArrowButton = styled.div`
   cursor: pointer;
   position: relative;
 
-  clip-path: polygon(
-    8px 0%,
-    100% 0%,
-    calc(100% - 8px) 100%,
-    0% 100%
-  );
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
 
   transition: transform 0.5s ease;
   overflow: visible;
@@ -290,12 +281,10 @@ const SlantedArrowButton = styled.div`
     transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
   }
 
-
   &:hover::after {
     width: 60%;
   }
 `;
-
 
 const SlantedPrimaryButton = styled.button`
   width: 200px;
@@ -307,12 +296,7 @@ const SlantedPrimaryButton = styled.button`
   border: none;
   cursor: pointer;
 
-  clip-path: polygon(
-    10px 0%,
-    100% 0%,
-    calc(100% - 10px) 100%,
-    0% 100%
-  );
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
 
   position: relative;
   transition: transform 0.3s ease;

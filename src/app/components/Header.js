@@ -39,7 +39,7 @@ export const Header = () => {
   return (
     <>
       <DisplayWrapper $scrolled={scrolled}>
-        <Logo src={logo} alt="Earth Realty" $scrolled={scrolled} />
+        <Logo src={logo} alt="Aarth Realtor" $scrolled={scrolled} />
         <RoutesWrapper $scrolled={scrolled}>
           {routesData.map((route) => (
             <Route
@@ -66,7 +66,7 @@ export const Header = () => {
         </Button>
       </DisplayWrapper>
       <SideMenu
-        $sideMenuOpened={sideMenuOpened}
+        sideMenuOpened={sideMenuOpened}
         setSideMenuOpened={setSideMenuOpened}
       />
     </>
@@ -85,10 +85,8 @@ const DisplayWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: ${(props) =>
-    props.$scrolled ? "#ffffff" : "transparent"};
-  box-shadow: ${(props) =>
-    props.$scrolled ? "0 1px 4px #ffffff" : "none"};
+  background: ${(props) => (props.$scrolled ? "#ffffff" : "transparent")};
+  box-shadow: ${(props) => (props.$scrolled ? "0 1px 4px #ffffff" : "none")};
     props.$scrolled ? "0 1px 4px #ffffff" : "none"};
   backdrop-filter: ${(props) => (props.$scrolled ? "blur(10.1px)" : "none")};
   -webkit-backdrop-filter: ${(props) =>
@@ -105,10 +103,13 @@ const Logo = styled(Image)`
 `;
 
 const RoutesWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   gap: 22px;
-  margin-left: 66px;
   transition: all 0.5s ease-in-out;
 
   @media (max-width: 700px) {
@@ -245,7 +246,7 @@ const SlantedPrimaryButton = styled.button`
   background: linear-gradient(135deg, #cc1e15, #c01209ff);
   border: none;
   cursor: pointer;
-  display:block;
+  display: block;
 
   @media (max-width: 700px) {
     display: none;

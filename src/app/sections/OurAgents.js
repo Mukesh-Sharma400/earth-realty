@@ -8,38 +8,36 @@ import agent3 from "../../../public/assets/agent3.jpg";
 import agent4 from "../../../public/assets/agent4.jpg";
 
 export const OurAgents = () => {
+  const agents = [
+    {
+      id: 1,
+      name: "Vikram Reddy",
+      role: "Agent Family House",
+      image: agent1,
+    },
 
-    const agents = [
-        {
-            id:1,
-            name: "Vikram Reddy",
-            role: "Agent Family House",
-            image: agent1,
-        },
-        
-        {
-            id:2,
-            name: "Aditya Desai",
-            role: "Agent Apartment",
-            image: agent2,
-        },
-        
-        {
-            id:3,
-            name: "Shreya Singh",
-            role: "Agent Condo",
-            image: agent3,
-        },
-        
-        {
-            id:4,
-            name: "Surya Patel",
-            role: "Agent Villa",
-            image: agent4,
-        },
-        
-    ];
-    const socialLinks = [
+    {
+      id: 2,
+      name: "Aditya Desai",
+      role: "Agent Apartment",
+      image: agent2,
+    },
+
+    {
+      id: 3,
+      name: "Shreya Singh",
+      role: "Agent Condo",
+      image: agent3,
+    },
+
+    {
+      id: 4,
+      name: "Surya Patel",
+      role: "Agent Villa",
+      image: agent4,
+    },
+  ];
+  const socialLinks = [
     {
       className: "bi bi-whatsapp",
       href: ``,
@@ -64,75 +62,75 @@ export const OurAgents = () => {
       tooltip: "Threads",
       ariaLabel: "Threads",
     },
-    ];
+  ];
 
-    return (
-    <AgentsSection>
-        <SectionHeader>
-          <SectionLabel>
-            <span>OUR AGENTS</span>
-            <i />
-          </SectionLabel>
+  return (
+    <SectionWrapper>
+      <SectionHeader>
+        <SectionLabel>
+          <span>OUR AGENTS</span>
+          <i />
+        </SectionLabel>
 
-          <SectionInfo>
-            <h2>Contact with Our Agents</h2>
+        <SectionInfo>
+          <h2>Contact with Our Agents</h2>
 
-            <p>
+          {/* <p>
              Explore the latest project that cater to your needs, whether you're looking for a modern office space or a vibrant community hub.
-            </p>
-          </SectionInfo>
-        </SectionHeader>
+            </p> */}
+        </SectionInfo>
+      </SectionHeader>
 
-        <AgentsGrid>
-            {agents.map((agent) => (
-            <AgentCard key={agent.id}>
-                <ImageWrapper>
-                <Image src={agent.image} alt={agent.name} fill />
-                </ImageWrapper>
+      <AgentsGrid>
+        {agents.map((agent) => (
+          <AgentCard key={agent.id}>
+            <ImageWrapper>
+              <Image src={agent.image} alt={agent.name} fill />
+            </ImageWrapper>
 
-                <h4>{agent.name}</h4>
-                <span className="role">{agent.role}</span>
+            <h4>{agent.name}</h4>
+            <span className="role">{agent.role}</span>
 
-                {/* <Socials>
+            {/* <Socials>
                 <a href="#">X</a>
                 <a href="#">f</a>
                 <a href="#">in</a>
                 <a href="#">◎</a>
                 </Socials> */}
-                <SocialLinksWrapper>
-                    {socialLinks.map((link, index) => (
-                    <SocialLink
-                        key={index}
-                        className={link.className}
-                        href={link.href}
-                        target="_blank"
-                        data-bs-toggle="tooltip"
-                        data-bs-title={link.tooltip}
-                        data-bs-custom-class="custom-tooltip"
-                        aria-label={link.ariaLabel}
-                    ></SocialLink>
-                    ))}
-                </SocialLinksWrapper>
-            </AgentCard>
-            ))}
-        </AgentsGrid>
-    </AgentsSection>
-
-    )
-
+            <SocialLinksWrapper>
+              {socialLinks.map((link, index) => (
+                <SocialLink
+                  key={index}
+                  className={link.className}
+                  href={link.href}
+                  target="_blank"
+                  data-bs-toggle="tooltip"
+                  data-bs-title={link.tooltip}
+                  data-bs-custom-class="custom-tooltip"
+                  aria-label={link.ariaLabel}
+                ></SocialLink>
+              ))}
+            </SocialLinksWrapper>
+          </AgentCard>
+        ))}
+      </AgentsGrid>
+    </SectionWrapper>
+  );
 };
 
-const AgentsSection = styled.section`
-    width: 100%;
-    padding: 30px 1.5%;
-    background: #ffffff;
-    transition: all 0.5s ease-in-out;
+const SectionWrapper = styled.section`
+  width: 100%;
+  padding: 50px 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  background: #ffffff;
+  transition: all 0.5s ease-in-out;
 `;
 
 const SectionHeader = styled.div`
-  margin-bottom: 60px;
+  // margin-bottom: 60px;
 `;
-
 
 const SectionLabel = styled.div`
   display: flex;
@@ -153,21 +151,24 @@ const SectionLabel = styled.div`
     height: 1px;
     background-color: #cc1e15;
   }
-  
+
   i {
-   animation: expand 0.8s ease forwards;
+    animation: expand 0.8s ease forwards;
   }
 
   @keyframes expand {
-    from { width: 0; }
-    to { width: 60px; }
+    from {
+      width: 0;
+    }
+    to {
+      width: 60px;
+    }
   }
-
 `;
 
 const SectionInfo = styled.div`
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  // grid-template-columns: 1.5fr 1fr;
   align-items: center;
   gap: 40px;
 
@@ -197,7 +198,7 @@ const SectionInfo = styled.div`
 const AgentsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  gap: 24px;
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
@@ -220,7 +221,7 @@ const AgentCard = styled.div`
     transform: translateY(-6px);
     transition: transform 0.3s ease;
     box-shadow: none;
-    border-bottom:1px solid #cc1e15;
+    border-bottom: 1px solid #cc1e15;
   }
 
   h4 {
@@ -250,10 +251,10 @@ const ImageWrapper = styled.div`
 
 const Socials = styled.div`
   display: flex;
-  justify-content:center;
+  justify-content: center;
   gap: 12px;
-  padding:10px;
-  margin-top:10px;
+  padding: 10px;
+  margin-top: 10px;
 
   a {
     width: 36px;
@@ -278,9 +279,9 @@ const Socials = styled.div`
 const SocialLinksWrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
-  padding:10px;
+  padding: 10px;
   gap: 12px;
   transition: all 0.5s ease-in-out;
 `;
@@ -306,4 +307,3 @@ const SocialLink = styled(Link)`
     border: 1px solid #cc1e15;
   }
 `;
-

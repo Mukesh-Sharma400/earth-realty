@@ -107,7 +107,6 @@ export const Hero = () => {
                 <i className="bi bi-copy"></i> Copy Email
               </span>
             </SlantedSecondaryButton>
-
           </ButtonsWrapper>
           <SocialLinksWrapper>
             {socialLinks.map((link, index) => (
@@ -178,7 +177,7 @@ const Overlay = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 700px;
+  max-width: 600px;
   position: absolute;
   top: 50%;
   left: 10%;
@@ -211,7 +210,7 @@ const Heading = styled.h1`
   font-size: 45px;
   color: white;
   transition: all 0.5s ease-in-out;
-  
+
   @media (max-width: 550px) {
     font-size: 40px;
   }
@@ -311,12 +310,7 @@ const SlantedPrimaryButton = styled.button`
   border: none;
   cursor: pointer;
 
-  clip-path: polygon(
-    10px 0%,
-    100% 0%,
-    calc(100% - 10px) 100%,
-    0% 100%
-  );
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
 
   position: relative;
   transition: transform 0.3s ease;
@@ -362,15 +356,11 @@ const SlantedSecondaryButton = styled.button`
 
   color: #ffff;
   background: transparent;
-  border: 2px solid #ffff !important;
+  border-top: 2px solid #ffff !important;
+  border-bottom: 2px solid #ffff !important;
   cursor: pointer;
 
-  clip-path: polygon(
-    10px 0%,
-    100% 0%,
-    calc(100% - 10px) 100%,
-    0% 100%
-  );
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
 
   position: relative;
   overflow: hidden;

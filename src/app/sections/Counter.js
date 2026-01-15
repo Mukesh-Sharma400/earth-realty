@@ -16,7 +16,12 @@ export const Counting = () => {
     }
   }, [inView]);
 
-  const sectionData = { clients:20, sales:30, clientSatisfaction: 99, years: currentYear - 2020};
+  const sectionData = {
+    clients: 20,
+    sales: 30,
+    clientSatisfaction: 99,
+    years: currentYear - 2020,
+  };
 
   return (
     <DisplayWrapper ref={ref}>
@@ -75,14 +80,10 @@ const DisplayWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  margin-top:40px;
-  margin-bottom:10px;
   justify-content: space-evenly;
   padding: 50px 0;
   background-color: white;
   transition: all 0.5s ease-in-out;
-  border-top:1.5px solid #efefef;
-  border-bottom: 1.5px solid #efefef;
 `;
 
 const Divider = styled.div`
